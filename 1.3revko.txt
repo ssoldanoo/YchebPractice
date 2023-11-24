@@ -1,0 +1,54 @@
+1.3)
+1)
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "input.txt.txt";
+        string[] lines = File.ReadAllLines("input.txt.txt");
+
+        int[] chosenNumbers = lines[0].Split().Select(int.Parse).ToArray();
+        int n = int.Parse(lines[1]);
+
+        string[] results = new string[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            int[] tixNums = lines[i + 2].Split().Select(int.Parse).ToArray();
+            int matchCount = tixNums.Count(number => chosenNumbers.Contains(number));
+            results[i] = matchCount >= 3 ? "Lucky" : "Unlucky";
+        }
+        File.WriteAllLines("output.txt", results);
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2)
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string path = "C:\\Users\\gr631_reris\\Desktop\\nums.txt.txt"; // мы создали файл, указали его путь и интегрировали в код как отдельную переменную
+
+        string[] deb = File.ReadAllText(path).Split(' '); // на данном этапе обозначаем что deb прочитает все файлы и поставит между ними пробелы
+        int[] numbers = new int[deb.Length]; // ввели его длинну 
+
+        for (int i = 0; i < deb.Length; i++) // типичный цикл for
+        {
+            numbers[i] = Convert.ToInt32(deb[i]); //Конвертирем в int т.к. до этого момента являлось string'ом
+
+            if (numbers[i] % 2 != 0) // Число нечётное?
+            {
+                Console.Write(numbers[i] + " "); //вывод! :)
+            }
+        }
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+3)

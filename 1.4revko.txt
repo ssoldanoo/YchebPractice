@@ -1,0 +1,126 @@
+1)
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Введите целое положительное число: ");
+        int n = int.Parse(Console.ReadLine());
+        int number = 1;
+
+        for (int i = 3; i < n; i++)
+        {
+            if (i % 3 == 0)
+            {
+                number *= i;
+            }
+        }
+        Console.WriteLine(number);
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2)
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "numsTask2.txt";
+        string[] num = File.ReadAllText(path).Split(',;');
+
+        double[] parsedNumbers = Array.ConvertAll(num, double.Parse);
+        double sum = 0;
+
+        foreach (double number in parsedNumbers)
+        {
+            for (int i = 0; i < num.Length; i++) // типичный цикл for
+            {
+                parsedNumbers[i] = Convert.ToInt32(num[i]);
+                if (number == 0)
+                {
+                    break;
+                }
+
+                if (number < sum)
+                {
+                    sum += number;
+                }
+            }
+
+            Console.WriteLine("Сумма положительных элементов: " + sum);
+        }
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+3)
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        
+        string path = "numsTask3.txt.txt"; // мы создали файл, указали его путь и интегрировали в код как отдельную переменную
+
+        string[] deb = File.ReadAllText(path).Split((','),StringSplitOptions.RemoveEmptyEntries); // на данном этапе обозначаем что deb прочитает все файлы и поставит между ними пробелы
+        int[] number = new int[deb.Length]; // ввели его длинну 
+        
+        for (int i = 0; i < deb.Length; i++) 
+        {
+            number[i] = Convert.ToInt32(deb[i]);
+            Console.Write(number[i] + " ");
+        }
+        
+        int min = number.Min();
+        int max = number.Max();
+        
+        double ratio = (double)min / max;
+
+        Console.WriteLine($"\nМинимальное значение: {min}");
+        Console.WriteLine($"Максимальное значение: {max}");
+        Console.WriteLine($"Отношение минимального к максимальному: {ratio}");
+
+        Console.ReadLine();
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+4)
+code
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+5)
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Введите a: ");
+        float a = float.Parse(Console.ReadLine());
+        Console.WriteLine("Введите b: ");
+        float b = float.Parse(Console.ReadLine());
+
+        int a1 = -1;
+        int a2 = 3;
+        int b1 = -2;
+        int b2 = 4;
+
+        if (a >= a1 && a <= a2 && b >= b1 && b <= b2)
+        {
+            Console.WriteLine("Принадлежит заштрихованной области");
+        }
+        else
+        {
+            Console.WriteLine("Не принадлежит заштрихованной области");
+        }
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+6)
+code
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

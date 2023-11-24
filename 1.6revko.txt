@@ -1,0 +1,151 @@
+1)
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "numsTask1.txt";
+        string[] words = File.ReadAllText(path).Split(new char[]{' '}, 
+        StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (string n in words)
+        {
+            if (n.Length % 2 != 0)
+            {
+                Console.WriteLine(n);
+            }
+        }
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2)
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string path = "numsTask2.txt";
+        string[] words = File.ReadAllLines(path);
+        
+        Console.WriteLine(string.Join(" ", words));
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+3)
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Введите число: ");
+        int number = int.Parse(Console.ReadLine());
+
+        if (number % 2 == 0 || number % 10 == 0)
+        {
+            Console.WriteLine($"Число {number} чётное и кратно 10");
+        }
+        else
+        {
+            Console.WriteLine($"Число {number} не подходит к условию");
+        }
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+4)
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Начните вводить положительные числа (чтобы завершить введите отрицательное): ");
+        List<float> numbers = new List<float>();
+        float input = 0;
+
+        do
+        {
+            input = float.Parse(Console.ReadLine());
+            if (input > 0)
+            {
+                numbers.Add(input);
+            }
+        }
+        while (input > 0);
+        
+        Console.WriteLine("Введите число a: ");
+        float a = float.Parse(Console.ReadLine());
+        float summ = 0;
+
+        foreach (float n in numbers)
+        {
+            if (n % a == 0)
+            {
+                summ += n;
+            }
+        }
+        Console.WriteLine("\nСумма = " + summ);
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+5)
+code
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+6)
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Random rnd = new Random();
+        int score = rnd.Next(5, 15);
+        float[] numbers = new float[score];
+
+        List<float> numbersPositive = new List<float>();
+        List<float> numbersNegative = new List<float>();
+
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            Random rand = new Random();
+            float nums = rand.Next(-15, 15);
+            numbers[i] = nums;
+            float num = 0;
+
+            if (numbers[i] >= 0)
+            {
+                num = numbers[i];
+                numbersPositive.Add(num);
+            }
+            else
+            {
+                num = numbers[i];
+                numbersNegative.Add(num);
+            }
+        }
+        Console.Write("Массив: ");
+
+        foreach (int n in numbers)
+        {
+            Console.Write(n + " ");
+        }
+        
+        Console.Write("\nПоложительные: ");
+
+        foreach (int positive in numbersPositive)
+        {
+            Console.Write(positive + " ");
+        }
+        Console.WriteLine("\nОтрицательные: ");
+
+        foreach (int negative in numbersNegative)
+        {
+            Console.Write(negative + " ");
+        }
+    }
+}

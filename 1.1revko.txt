@@ -1,0 +1,188 @@
+1)
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] collection = new int[10]; // Вводим одномерный массив с размерностью 10
+        Random random = new Random(); //Используем new Random чтобы получить случайные числа
+        for (int i = 0; i < collection.Length; i++)
+        {
+            collection[i] = random.Next(100); //Счётчик i хранит случайное число от 0 до 100 
+                                              //random.Next возращает нам целое неотрицательное число.
+        }
+        int MinIndex = 0;
+
+        for (int i = 0; i < collection.Length; i++) 
+        {
+            if (collection[i] < collection[MinIndex]) // если массив i меньше массива min
+            {
+                MinIndex = i; // тогда min = i
+            }
+        }
+        Console.WriteLine("Коллекция чисел:"); 
+        for (int i = 0; i < collection.Length; i++)
+        {
+            Console.Write(collection[i] + " "); // вывод в консоль коллекцию наших случайных чисел
+        }
+        Console.WriteLine();
+        Console.WriteLine("Индекс минимального числа: " + MinIndex); // Вывод минимального из них.
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2)
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<int> numbers = new List<int>(); //Список чисел
+        
+        Console.WriteLine("Введите числа (0 чтобы остановиться)");
+        //ввод переменных
+        int sum = 0; 
+        int num = 1;
+        int count = 0;
+        int number;
+
+        for (;;)
+        {
+            number = Convert.ToInt32(Console.ReadLine());
+            if (number != 0) //оператор неравенства
+            {
+                numbers.Add(number); // добавление элемента
+            }
+            else //иначе, завершить
+            {
+                break;
+            }
+            sum += number;
+            num *= number;
+            count++;
+        }
+
+        float average = sum / numbers.Count();
+        Console.WriteLine($"Сумма: {sum}\nПроизведение: {num}\nСреднее: {average}\n ");
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+3)
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> names = new List<string>();
+            Console.WriteLine("Введите строку (или пустую для завершения): ");
+            string shortString = null;
+            string longString = null; 
+
+            do
+            {
+                string input = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    break;
+                }
+
+                names.Add(input);
+            } 
+            while (true);
+            
+	    foreach (string t in names)
+            {
+                if (shortString == null || t.Length < shortString.Length)
+                {
+                    shortString = t;
+                }
+
+                if (longString == null || t.Length > longString.Length) 
+                {
+                    longString = t;
+                }
+            }
+
+            Console.WriteLine("Самое короткое слово: " + shortString);
+            Console.WriteLine("Самое длинное слово: " + longString);
+        }
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+4)
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Введите минимальное значение диапазона: ");
+        int min = int.Parse(Console.ReadLine());
+        Console.WriteLine("Введите максимальное значение диапазона: ");
+        int max = int.Parse(Console.ReadLine());
+        Console.WriteLine("Введите количество случайных чисел: ");
+        int count = int.Parse(Console.ReadLine());
+        
+        List<int> numbersList = GenerateRandomNumbers(min, max, count);
+        int[] numbersArray = numbersList.ToArray();
+        
+        Console.WriteLine("Случайные числа: ");
+        foreach (int number in numbersArray)
+        {
+            Console.WriteLine(number);
+        }
+    }
+    
+    static List<int> GenerateRandomNumbers(int min, int max, int count)
+    {
+        List<int> numbersList = new List<int>();
+        Random random = new Random();
+        
+        for(int i = 0; i < count; i++)
+        {
+            int randomnumber = random.Next(min, max + 1);
+            numbersList.Add(randomnumber);
+        }
+        return numbersList;
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+5)
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<string> words = new List<string>();
+        Console.WriteLine("Начните вводить слова (Если введете пустую строку код завершиться):\nStart\n");
+        
+        do
+        {
+            string input = Console.ReadLine();
+            if (string.IsNullOrEmpty(input))
+            {
+                Console.WriteLine("End");
+                break;
+            }
+            words.Add(input);
+        }
+        while (true);
+        int numword = 0;
+        
+        for (int i = 0; i < words.Count; i++)
+        {
+            numword++;
+        }
+        Console.WriteLine($"\nКоличество слов в строке: {numword}");
+    }
+}

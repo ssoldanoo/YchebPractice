@@ -1,0 +1,192 @@
+1)
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] numbers = new int [100];
+        int n = 400;
+        
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            numbers[i] = n;
+            n -= 3;
+        }
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            Console.WriteLine(numbers[i]);
+        }
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2)
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int number = 1;
+        int[] numbers = new int[100];
+
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            numbers[i] = number;
+            number += 2;
+        }
+
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            Console.WriteLine(numbers[i]);
+        }
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+3)
+using System;
+using System.Data;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Введите количество строк: ");
+        int row = int.Parse(Console.ReadLine());
+        Console.Write("Введите количество столбцов: ");
+        int column = int.Parse(Console.ReadLine());
+
+        int[,] matrix = new int[row, column];
+
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < column; j++)
+            {
+                matrix[0, j] = 1;
+                matrix[i, 0] = 1;
+                if (i > 0 && j > 0)
+                {
+                    matrix[i, j] = matrix[i - 1, j] + matrix[i, j - 1];
+                }
+            }
+        }
+
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < column; j++)
+            {
+                Console.Write(matrix[i,j] + "\t");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+4)
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        static int[] RandomAverage()
+        {
+            int[,] month = new int[12, 30];
+            int[] sum = new int[12];
+            Random r = new Random();
+
+            for (int i = 0; i < 12; ++i)
+            {
+                for (int j = 0; j < 30; ++j)
+                {
+                    month[i, j] = r.Next(-30, 30);
+                }    
+            }
+
+            for (int i = 0; i < 12; ++i)
+            {
+                for (int j = 0; j < 30; ++j)
+                {
+                    sum[i] += month[i, j];
+                }
+            }
+            return sum;
+        }
+
+
+        int[] average = RandomAverage();
+
+        for (int i = 0; i < 12; ++i)
+        {
+            Console.WriteLine($"{i + 1} = {average[i] / 30}");
+        }
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+5)
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        static int[] RandomTemp()
+        {
+            Random rand = new Random();
+            int[] temp = new int[30];
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i] = rand.Next(-30, 30);
+            }
+
+            return temp;
+        }
+
+        var month = new Dictionary<string, int[]>()
+        {
+            { "Январь", RandomTemp() },
+            { "Феварль", RandomTemp() },
+            { "Март", RandomTemp() },
+            { "Апрель", RandomTemp() },
+            { "Май", RandomTemp() },
+            { "Июнь", RandomTemp() },
+            { "Июль", RandomTemp() },
+            { "Август", RandomTemp() },
+            { "Сентябрь", RandomTemp() },
+            { "Октябрь", RandomTemp() },
+            { "Ноябрь", RandomTemp() },
+            { "Декабрь", RandomTemp() },
+        };
+        foreach (var nameMonth in month)
+        {
+            Console.WriteLine(nameMonth.Key + ": ");
+
+            foreach (var temp in nameMonth.Value)
+            {
+                Console.Write(temp + " ");
+            }
+            Console.WriteLine();
+        }
+
+        var Temp = new Dictionary<string, int>();
+
+        foreach (var summTemp in month)
+        {
+            int summ = 0;
+
+            foreach (var nSumm in summTemp.Value)
+            {
+                summ += nSumm;
+            }
+
+            int average = summ / 30;
+            Temp.Add(summTemp.Key, average);
+        }
+        Console.WriteLine("\nСредняя температура месяцев: ");
+
+        List<KeyValuePair<string, int>> display = Temp.OrderBy(a => a.Value).ToList();
+        Console.WriteLine(string.Join("\n", display));
+    }
+}
